@@ -1,0 +1,3 @@
+var Dropbox = {
+	"choose": function () {}
+}
