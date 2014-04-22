@@ -18,6 +18,8 @@ $> grunt serve
 
 $> grunt serve:dist
 
+$> grunt test
+
 $> grunt build
 ```
 
