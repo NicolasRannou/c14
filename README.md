@@ -5,18 +5,21 @@ this is a secret :)
 
 ```bash
 # get the cource code
-git clone
+$> git clone
 
 # install the npm packages for the grunt task manager
-npm install
+$> npm install
 
 # install the bower packages for the project (c14)
-bower install
+$> bower install
 
 #good to go!
-grunt serve
+$> grunt serve
 
-grunt serve:dist
+$> grunt serve:dist
 
-grunt build
+$> grunt build
 ```
+
+Closure compiler installation
+https://github.com/gmarty/grunt-closure-compiler
