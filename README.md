@@ -3,6 +3,7 @@ c14
 
 this is a secret :)
 
+```bash
 # get the cource code
 git clone
 
@@ -18,3 +19,4 @@ grunt serve
 grunt serve:dist
 
 grunt build
+```
