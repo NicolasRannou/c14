@@ -22,8 +22,6 @@ module.exports = function(config) {
       'app/components/picker/pickerBase/pickerBase.js',
       'app/components/picker/pickerDropbox/pickerDropbox.js',
       'app/components/picker/pickerGoogledrive/pickerGoogledrive.js',
-      'app/components/picker/pickerUrl/pickerUrl.js',
-      'app/components/indexer/indexer.js',
       'app/viewer/viewer.js',
       'app/mainpage/mainpage.js',
       'app/mainpage/*.js'
