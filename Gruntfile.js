@@ -438,7 +438,7 @@ module.exports = function (grunt) {
                                 'concurrent:test',
                                 'autoprefixer',
                                 'connect:test',
-                                'karma:unit']);
+                                'karma:continuous']);
 
     grunt.registerTask('build', ['clean:dist',
                                  'bower-install',
