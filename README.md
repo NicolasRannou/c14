@@ -1,4 +1,4 @@
-c14 [![Build Status](https://travis-ci.org/NicolasRannou/c14.svg?branch=master)](https://travis-ci.org/NicolasRannou/c14)
+c14 [![Build Status](https://travis-ci.org/NicolasRannou/c14.svg?branch=master&style=flat)](https://travis-ci.org/NicolasRannou/c14)
 ===
 
 this is a secret :)
