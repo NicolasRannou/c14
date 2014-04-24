@@ -32,7 +32,8 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/components/**/*.js',
                         '<%= yeoman.app %>/mainpage/**/*.js',
                         '<%= yeoman.app %>/viewer/**/*.js'],
-                tasks: ['newer:jshint:all'],
+                tasks: ['karma:continuous',
+                        'newer:jshint:all'],
                 options: {
                     livereload: true
                 }
@@ -145,8 +146,6 @@ module.exports = function (grunt) {
                 ignorePath: '<%= yeoman.app %>/'
             }
         },
-
-
 
 
         // Compiles Sass to CSS and generates necessary files if requested
@@ -381,18 +380,7 @@ module.exports = function (grunt) {
                                                                      '<%= yeoman.app %>/mainpage/**/!(*_test).js',
                                                                      '<%= yeoman.app %>/viewer/viewer.js',
                                                                      '<%= yeoman.app %>/viewer/**/!(*_test).js',
-                                                                     '<%= yeoman.app %>/*.js'],
-                    '<%= yeoman.dist %>/scripts/vendor.js': ['<%= yeoman.app %>/bower_components/angular/angular.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-cookies/angular-cookies.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-resource/angular-resource.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-route/angular-route.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-sanitize/angular-sanitize.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-scenario/angular-scenario.min.js',
-                                                             '<%= yeoman.app %>/bower_components/es5-shim/es5-shim.min.js',
-                                                             '<%= yeoman.app %>/bower_components/jquery/jquery.min.js',
-                                                             '<%= yeoman.app %>/bower_components/json3/lib/json3.min.js',
-                                                             '<%= yeoman.app %>/bower_components/sass-bootstrap/dist/bootstrap.min.js'],
+                                                                     '<%= yeoman.app %>/*.js']
                 }
             },
             extern:{
@@ -417,7 +405,13 @@ module.exports = function (grunt) {
             unit: {
                 configFile: 'karma.conf.js',
                 singleRun: true
-            }
+            },
+            //continuous integration mode: run tests once in PhantomJS browser.
+            continuous: {
+                configFile: 'karma.conf.js',
+                singleRun: true,
+                browsers: ['PhantomJS']
+            },
         }
     });
 
@@ -444,7 +438,7 @@ module.exports = function (grunt) {
                                 'concurrent:test',
                                 'autoprefixer',
                                 'connect:test',
-                                'karma']);
+                                'karma:unit']);
 
     grunt.registerTask('build', ['clean:dist',
                                  'bower-install',

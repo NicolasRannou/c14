@@ -63,11 +63,6 @@ module.exports = function(config) {
     coverageReporter: {
         type : 'html',
         dir : 'tests/coverage.html'
-    },
-
-    // not working... SASS issue?
-    htmlReporter: {
-       outputFile: 'tests/units.html'
     }
   });
 };
