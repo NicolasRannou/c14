@@ -4,7 +4,9 @@ node_js:
   - '0.11'
 before_install:
   - sudo apt-get update
-  - sudo apt-get install ruby-compass
+  - sudo apt-get install ruby-full rubygems1.8
+  - sudo gem install sass
+  - sudo gem install compass
 before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install'
