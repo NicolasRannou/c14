@@ -1,4 +1,4 @@
-c14 [![Build Status](https://travis-ci.org/NicolasRannou/c14.svg?branch=master)](https://travis-ci.org/NicolasRannou/c14) http://img.shields.io/badge/<License>-<MIT>-<blue>.svg
+c14 [![Build Status](https://travis-ci.org/NicolasRannou/c14.svg?branch=master)](https://travis-ci.org/NicolasRannou/c14)
 ===
 
 this is a secret :)
