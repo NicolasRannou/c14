@@ -1,5 +1,6 @@
-node_modules
+app/bower_components
+closure_compiler
 dist
+node_modules
 .tmp
 .sass-cache
-app/bower_components

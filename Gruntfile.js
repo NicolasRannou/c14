@@ -328,14 +328,14 @@ module.exports = function (grunt) {
         // Closure compiler task
         'closure-compiler': {
             frontend: {
-                closurePath: '/home/n/nicolas.rannou/gitroot/closure-compiler',
+                closurePath: 'closure-compiler',
                 js: '<%= yeoman.dist %>/scripts/ngmin/scripts.concat.js',
                 jsOutputFile: '<%= yeoman.dist %>/scripts/scripts.min.js',
                 maxBuffer: 500,
                 options: {
                     compilation_level: 'ADVANCED_OPTIMIZATIONS',
                     language_in: 'ECMASCRIPT5_STRICT',
-                    externs: ['/home/n/nicolas.rannou/gitroot/closure-compiler/contrib/externs/angular-1.2.js',
+                    externs: ['closure-compiler/contrib/externs/angular-1.2.js',
                               '<%= yeoman.app %>/externs.dropbox',
                               '<%= yeoman.app %>/externs.google'],
                     warning_level:'VERBOSE'
