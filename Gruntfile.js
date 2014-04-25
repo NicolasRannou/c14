@@ -382,6 +382,31 @@ module.exports = function (grunt) {
                                                                      '<%= yeoman.app %>/*.js']
                 }
             },
+            test: {
+                options: {
+                    banner: '\'use strict\';\n',
+                    process: function(src, filepath) {
+                        return '// Source: ' + filepath + '\n' +
+                        src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+                    },
+                },
+                files: {
+                    '<%= yeoman.dist %>/scripts/scripts.concat.js': ['<%= yeoman.app %>/components/picker/pickerBase/pickerBase.js',
+                                                                     '<%= yeoman.app %>/components/picker/pickerDropbox/pickerDropbox.js',
+                                                                     '<%= yeoman.app %>/components/picker/pickerGoogledrive/pickerGoogledrive.js',
+                                                                     '<%= yeoman.app %>/components/picker/pickerUrl/pickerUrl.js',
+                                                                     '<%= yeoman.app %>/components/picker/picker.js',
+                                                                     '<%= yeoman.app %>/components/indexer/patient/patient.js',
+                                                                     '<%= yeoman.app %>/components/indexer/study/study.js',
+                                                                     '<%= yeoman.app %>/components/indexer/indexer.js',
+                                                                     '<%= yeoman.app %>/components/**/*.js',
+                                                                     '<%= yeoman.app %>/mainpage/mainpage.js',
+                                                                     '<%= yeoman.app %>/mainpage/**/*.js',
+                                                                     '<%= yeoman.app %>/viewer/viewer.js',
+                                                                     '<%= yeoman.app %>/viewer/**/*.js',
+                                                                     '<%= yeoman.app %>/*.js']
+                }
+            },
             extern:{
                 files: {
                     '<%= yeoman.dist %>/scripts/vendor.js': ['<%= yeoman.app %>/bower_components/angular/angular.min.js',
@@ -487,27 +512,49 @@ grunt
 
     });
 
-    grunt.registerTask('build', ['clean:dist',
-                                 'bower-install',
-                                 'useminPrepare',
-                                 'concurrent:dist',
-                                 'autoprefixer',
-                                 'concat:dist',
-                                 'concat:extern',
-                                 'ngmin',
-                                 'copy:dist',
-                                 'cdnify',
-                                 'cssmin',
-                                 'closure-compiler',
-                                 'rev',
-                                 'usemin',
-                                 'htmlmin',
-                                 'jsdoc']);
+    grunt.registerTask('build', function (target) {
+
+        if (target === 'test') {
+            return grunt.task.run( ['clean:dist',
+                                    'bower-install',
+                                    'useminPrepare',
+                                    'concurrent:dist',
+                                    'autoprefixer',
+                                    'concat:test',
+                                    'concat:extern',
+                                    'ngmin',
+                                    'copy:dist',
+                                    'cdnify',
+                                    'cssmin',
+                                    'closure-compiler',
+                                    'rev',
+                                    'usemin',
+                                    'htmlmin',
+                                    'jsdoc']);
+        }
+
+        grunt.task.run( ['clean:dist',
+                         'bower-install',
+                         'useminPrepare',
+                         'concurrent:dist',
+                         'autoprefixer',
+                         'concat:dist',
+                         'concat:extern',
+                         'ngmin',
+                         'copy:dist',
+                         'cdnify',
+                         'cssmin',
+                         'closure-compiler',
+                         'rev',
+                         'usemin',
+                         'htmlmin',
+                         'jsdoc']);
+
+    });
 
     grunt.registerTask('default', ['newer:jshint',
                                    'test',
                                    'build']);
 
-    grunt.registerTask('travis', ['test:offscreen',
-                                  'build']);
+    grunt.registerTask('travis', ['test:offscreen']);
 };
