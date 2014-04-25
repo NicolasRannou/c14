@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/components/**/*.js',
                         '<%= yeoman.app %>/mainpage/**/*.js',
                         '<%= yeoman.app %>/viewer/**/*.js'],
-                tasks: ['karma:continuous',
+                tasks: ['karma:offscreen',
                         'newer:jshint:all'],
                 options: {
                     livereload: true
@@ -122,7 +122,6 @@ module.exports = function (grunt) {
             },
             server: '.tmp'
         },
-
 
         // Add vendor prefixed styles
         autoprefixer: {
@@ -402,21 +401,49 @@ module.exports = function (grunt) {
 
         // Test settings
         karma: {
-            unit: {
+            basic: {
                 configFile: 'karma.conf.js',
                 singleRun: true
             },
             //continuous integration mode: run tests once in PhantomJS browser.
-            continuous: {
+            offscreen: {
                 configFile: 'karma.conf.js',
                 singleRun: true,
                 browsers: ['PhantomJS']
-            },
+            }
+
+            // NOT WORKING YET
+            // //continuous integration mode: run tests once in PhantomJS browser.
+            // dist: {
+            //     configFile: 'karma.conf.js',
+            //     singleRun: true,
+            //     options: {
+            //         files: ['<%= yeoman.dist %>/scripts/vendor.js',
+            //                 '<%= yeoman.dist %>/scripts/scripts.min.js',
+            //                 '<%= yeoman.app %>/components/**/*_test.js',
+            //                 '<%= yeoman.app %>/mainpage/**/*_test.js',
+            //                 '<%= yeoman.app %>/viewer/**/*_test.js',
+            //                 '<%= yeoman.app %>/*_test.js']
+            //     }
+            // },
+            // //continuous integration mode: run tests once in PhantomJS browser.
+            // distOffscreen: {
+            //     configFile: 'karma.conf.js',
+            //     singleRun: true,
+            //     browsers: ['PhantomJS'],
+            //     options: {
+            //         files: ['<%= yeoman.dist %>/scripts/vendor.js',
+            //                 '<%= yeoman.dist %>/scripts/scripts.min.js',
+            //                 '<%= yeoman.app %>/components/**/*_test.js',
+            //                 '<%= yeoman.app %>/mainpage/**/*_test.js',
+            //                 '<%= yeoman.app %>/viewer/**/*_test.js',
+            //                 '<%= yeoman.app %>/*_test.js']
+            //     }
+            // },
         }
     });
-
-
-    grunt.registerTask('serve', function (target) {
+grunt
+    .registerTask('serve', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
         }
@@ -429,12 +456,36 @@ module.exports = function (grunt) {
                         'watch']);
     });
 
-    grunt.registerTask('test', ['clean:server',
-                                'concurrent:test',
-                                'autoprefixer',
-                                'connect:test',
-                                'karma:continuous',
-                                'build']);
+    grunt.registerTask('test', function (target) {
+
+        // NOT WORKING YET
+        // if (target === 'dist') {
+        //     return grunt.task.run(['build',
+        //                            'connect:dist',
+        //                            'karma:dist']);
+        // }
+
+        // if (target === 'distOffscreen') {
+        //     return grunt.task.run(['build',
+        //                            'connect:dist',
+        //                            'karma:distOffscreen']);
+        // }
+
+        if (target === 'offscreen') {
+            return grunt.task.run(['clean:server',
+                                   'concurrent:test',
+                                   'autoprefixer',
+                                   'connect:test',
+                                   'karma:offscreen']);
+        }
+
+        grunt.task.run(['clean:server',
+                        'concurrent:test',
+                        'autoprefixer',
+                        'connect:test',
+                        'karma:basic']);
+
+    });
 
     grunt.registerTask('build', ['clean:dist',
                                  'bower-install',
@@ -456,4 +507,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['newer:jshint',
                                    'test',
                                    'build']);
+
+    grunt.registerTask('travis', ['test:offscreen',
+                                  'build']);
 };
