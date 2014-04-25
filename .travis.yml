@@ -3,10 +3,10 @@ node_js:
   - '0.10'
 before_install:
 # CLOSURE COMPILER
-  - sudo apt-get install git ant openjdk-7-jdk
-  - git clone https://code.google.com/p/closure-compiler/
-  - cd closure-compiler
-  - ant
+#  - sudo apt-get install git ant openjdk-7-jdk
+#  - git clone https://code.google.com/p/closure-compiler/
+#  - cd closure-compiler
+#  - ant
 # COMPASS
   - gem update --system
   - gem install sass --version "=3.2.12"
