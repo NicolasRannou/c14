@@ -332,6 +332,7 @@ module.exports = function (grunt) {
                 jsOutputFile: '<%= yeoman.dist %>/scripts/scripts.min.js',
                 maxBuffer: 500,
                 options: {
+                    /*jshint -W106 */
                     compilation_level: 'ADVANCED_OPTIMIZATIONS',
                     language_in: 'ECMASCRIPT5_STRICT',
                     externs: ['closure-compiler/contrib/externs/angular-1.2.js',
@@ -339,6 +340,7 @@ module.exports = function (grunt) {
                               '<%= yeoman.app %>/externs.google'],
                     warning_level:'VERBOSE',
                     angular_pass: true
+                    /*jshint +W106 */
                 }
             }
         },
@@ -494,8 +496,7 @@ module.exports = function (grunt) {
             }
         }
     });
-grunt
-    .registerTask('serve', function (target) {
+    grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
         }
