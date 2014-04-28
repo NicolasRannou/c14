@@ -9,7 +9,7 @@
 function MainpageCtrl($scope) {
     // general info for the main page
     // not module specific
-    $scope.awesomeThings = ['HTML5 Boilerplate',
+    $scope['awesomeThings'] = ['HTML5 Boilerplate',
                             'AngularJS',
                             'Karma'];
 }

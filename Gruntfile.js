@@ -392,31 +392,33 @@ module.exports = function (grunt) {
                     },
                 },
                 files: {
-                    '<%= yeoman.dist %>/scripts/scripts.concat.js': ['<%= yeoman.app %>/components/picker/pickerBase/pickerBase.js',
-                                                                     '<%= yeoman.app %>/components/picker/pickerDropbox/pickerDropbox.js',
-                                                                     '<%= yeoman.app %>/components/picker/pickerGoogledrive/pickerGoogledrive.js',
-                                                                     '<%= yeoman.app %>/components/picker/pickerUrl/pickerUrl.js',
-                                                                     '<%= yeoman.app %>/components/picker/picker.js',
-                                                                     '<%= yeoman.app %>/components/indexer/patient/patient.js',
-                                                                     '<%= yeoman.app %>/components/indexer/study/study.js',
-                                                                     '<%= yeoman.app %>/components/indexer/indexer.js',
-                                                                     '<%= yeoman.app %>/components/**/*.js',
-                                                                     '<%= yeoman.app %>/mainpage/mainpage.js',
-                                                                     '<%= yeoman.app %>/mainpage/**/*.js',
-                                                                     '<%= yeoman.app %>/viewer/viewer.js',
-                                                                     '<%= yeoman.app %>/viewer/**/*.js',
-                                                                     '<%= yeoman.app %>/*.js']
+                    '<%= yeoman.dist %>/scripts/scripts.test.js': ['<%= yeoman.app %>/components/**/*_test.js',
+                                                                   '<%= yeoman.app %>/mainpage/**/*_test.js',
+                                                                   '<%= yeoman.app %>/viewer/**/*_test.js',
+                                                                   '<%= yeoman.app %>/*_test.js']
                 }
             },
             extern:{
                 files: {
                     '<%= yeoman.dist %>/scripts/vendor.js': ['<%= yeoman.app %>/bower_components/angular/angular.min.js',
                                                              '<%= yeoman.app %>/bower_components/angular-cookies/angular-cookies.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.min.js',
                                                              '<%= yeoman.app %>/bower_components/angular-resource/angular-resource.min.js',
                                                              '<%= yeoman.app %>/bower_components/angular-route/angular-route.min.js',
                                                              '<%= yeoman.app %>/bower_components/angular-sanitize/angular-sanitize.min.js',
-                                                             '<%= yeoman.app %>/bower_components/angular-scenario/angular-scenario.min.js',
+                                                             '<%= yeoman.app %>/bower_components/es5-shim/es5-shim.min.js',
+                                                             '<%= yeoman.app %>/bower_components/jquery/jquery.min.js',
+                                                             '<%= yeoman.app %>/bower_components/json3/lib/json3.min.js',
+                                                             '<%= yeoman.app %>/bower_components/sass-bootstrap/dist/bootstrap.min.js'],
+                }
+            },
+            externTest:{
+                files: {
+                    '<%= yeoman.dist %>/scripts/vendor.js': ['<%= yeoman.app %>/bower_components/angular/angular.min.js',
+                                                             '<%= yeoman.app %>/bower_components/angular-cookies/angular-cookies.min.js',
+                                                             '<%= yeoman.app %>/bower_components/angular-resource/angular-resource.min.js',
+                                                             '<%= yeoman.app %>/bower_components/angular-route/angular-route.min.js',
+                                                             '<%= yeoman.app %>/bower_components/angular-sanitize/angular-sanitize.min.js',
+                                                             '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.js',
                                                              '<%= yeoman.app %>/bower_components/es5-shim/es5-shim.min.js',
                                                              '<%= yeoman.app %>/bower_components/jquery/jquery.min.js',
                                                              '<%= yeoman.app %>/bower_components/json3/lib/json3.min.js',
@@ -429,43 +431,67 @@ module.exports = function (grunt) {
         karma: {
             basic: {
                 configFile: 'karma.conf.js',
-                singleRun: true
+                singleRun: true,
+                options: {
+                    files: ['<%= yeoman.app %>/bower_components/angular/angular.js',
+                            '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.js',
+                            '<%= yeoman.app %>/bower_components/angular-resource/angular-resource.js',
+                            '<%= yeoman.app %>/bower_components/angular-cookies/angular-cookies.js',
+                            '<%= yeoman.app %>/bower_components/angular-sanitize/angular-sanitize.js',
+                            '<%= yeoman.app %>/bower_components/angular-route/angular-route.js',
+                            '<%= yeoman.app %>/app.js',
+                            '<%= yeoman.app %>/components/picker/picker.js',
+                            '<%= yeoman.app %>/components/picker/pickerBase/pickerBase.js',
+                            '<%= yeoman.app %>/components/picker/pickerDropbox/pickerDropbox.js',
+                            '<%= yeoman.app %>/components/picker/pickerGoogledrive/pickerGoogledrive.js',
+                            '<%= yeoman.app %>/viewer/viewer.js',
+                            '<%= yeoman.app %>/mainpage/mainpage.js',
+                            '<%= yeoman.app %>/mainpage/*.js']
+                }
             },
-            //continuous integration mode: run tests once in PhantomJS browser.
+
             offscreen: {
                 configFile: 'karma.conf.js',
                 singleRun: true,
-                browsers: ['PhantomJS']
-            }
+                browsers: ['PhantomJS'],
+                options: {
+                    files: ['<%= yeoman.app %>/bower_components/angular/angular.js',
+                            '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.js',
+                            '<%= yeoman.app %>/bower_components/angular-resource/angular-resource.js',
+                            '<%= yeoman.app %>/bower_components/angular-cookies/angular-cookies.js',
+                            '<%= yeoman.app %>/bower_components/angular-sanitize/angular-sanitize.js',
+                            '<%= yeoman.app %>/bower_components/angular-route/angular-route.js',
+                            '<%= yeoman.app %>/app.js',
+                            '<%= yeoman.app %>/components/picker/picker.js',
+                            '<%= yeoman.app %>/components/picker/pickerBase/pickerBase.js',
+                            '<%= yeoman.app %>/components/picker/pickerDropbox/pickerDropbox.js',
+                            '<%= yeoman.app %>/components/picker/pickerGoogledrive/pickerGoogledrive.js',
+                            '<%= yeoman.app %>/viewer/viewer.js',
+                            '<%= yeoman.app %>/mainpage/mainpage.js',
+                            '<%= yeoman.app %>/mainpage/*.js']
+                }
+            },
 
-            // NOT WORKING YET
-            // //continuous integration mode: run tests once in PhantomJS browser.
-            // dist: {
-            //     configFile: 'karma.conf.js',
-            //     singleRun: true,
-            //     options: {
-            //         files: ['<%= yeoman.dist %>/scripts/vendor.js',
-            //                 '<%= yeoman.dist %>/scripts/scripts.min.js',
-            //                 '<%= yeoman.app %>/components/**/*_test.js',
-            //                 '<%= yeoman.app %>/mainpage/**/*_test.js',
-            //                 '<%= yeoman.app %>/viewer/**/*_test.js',
-            //                 '<%= yeoman.app %>/*_test.js']
-            //     }
-            // },
-            // //continuous integration mode: run tests once in PhantomJS browser.
-            // distOffscreen: {
-            //     configFile: 'karma.conf.js',
-            //     singleRun: true,
-            //     browsers: ['PhantomJS'],
-            //     options: {
-            //         files: ['<%= yeoman.dist %>/scripts/vendor.js',
-            //                 '<%= yeoman.dist %>/scripts/scripts.min.js',
-            //                 '<%= yeoman.app %>/components/**/*_test.js',
-            //                 '<%= yeoman.app %>/mainpage/**/*_test.js',
-            //                 '<%= yeoman.app %>/viewer/**/*_test.js',
-            //                 '<%= yeoman.app %>/*_test.js']
-            //     }
-            // },
+            dist: {
+                configFile: 'karma.conf.js',
+                singleRun: true,
+                options: {
+                    files: ['<%= yeoman.dist %>/scripts/vendor.js',
+                            '<%= yeoman.dist %>/scripts/scripts.min.js',
+                            '<%= yeoman.dist %>/scripts/scripts.test.js']
+                }
+            },
+
+            distOffscreen: {
+                configFile: 'karma.conf.js',
+                singleRun: true,
+                browsers: ['PhantomJS'],
+                options: {
+                    files: ['<%= yeoman.dist %>/scripts/vendor.js',
+                            '<%= yeoman.dist %>/scripts/scripts.min.js',
+                            '<%= yeoman.dist %>/scripts/scripts.test.js']
+                }
+            }
         }
     });
 grunt
@@ -484,18 +510,17 @@ grunt
 
     grunt.registerTask('test', function (target) {
 
-        // NOT WORKING YET
-        // if (target === 'dist') {
-        //     return grunt.task.run(['build',
-        //                            'connect:dist',
-        //                            'karma:dist']);
-        // }
+        if (target === 'dist') {
+            return grunt.task.run(['build:test',
+                                   'connect:dist',
+                                   'karma:dist']);
+        }
 
-        // if (target === 'distOffscreen') {
-        //     return grunt.task.run(['build',
-        //                            'connect:dist',
-        //                            'karma:distOffscreen']);
-        // }
+        if (target === 'distOffscreen') {
+            return grunt.task.run(['build:test',
+                                   'connect:dist',
+                                   'karma:distOffscreen']);
+        }
 
         if (target === 'offscreen') {
             return grunt.task.run(['clean:server',
@@ -521,8 +546,9 @@ grunt
                                     'useminPrepare',
                                     'concurrent:dist',
                                     'autoprefixer',
+                                    'concat:dist',
                                     'concat:test',
-                                    'concat:extern',
+                                    'concat:externTest',
                                     'ngmin',
                                     'copy:dist',
                                     'cdnify',
@@ -557,5 +583,6 @@ grunt
                                    'test',
                                    'build']);
 
-    grunt.registerTask('travis', ['test:offscreen']);
+    grunt.registerTask('travis', ['test:offscreen',
+                                  'test:distOffscreen']);
 };
