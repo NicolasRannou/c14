@@ -3,8 +3,7 @@
 /**
  * @constructor
  * @param {pickerService} pickerService
- *
- *
+ * @ngInject
  */
 function ViewerCtrl($scope, pickerService){
     $scope.version = '0.3';
@@ -21,11 +20,6 @@ function ViewerCtrl($scope, pickerService){
     //   indexerService.index($scope['pickY2']);
     // });
 }
-
-/**
- * @description hello
- */
-ViewerCtrl['$inject'] = ['$scope', 'pickerService'];
 
 /**
  * @description hello

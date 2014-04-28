@@ -337,7 +337,8 @@ module.exports = function (grunt) {
                     externs: ['closure-compiler/contrib/externs/angular-1.2.js',
                               '<%= yeoman.app %>/externs.dropbox',
                               '<%= yeoman.app %>/externs.google'],
-                    warning_level:'VERBOSE'
+                    warning_level:'VERBOSE',
+                    angular_pass: true
                 }
             }
         },

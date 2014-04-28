@@ -1,8 +1,10 @@
 'use strict';
 /**
  * @constructor
- *
- *
+ * @param {!angular.$filter} $filter
+ * @param {pickerDropboxService} pickerDropboxService
+ * @param {pickerGoogledriveService} pickerGoogledriveService
+ * @ngInject
  */
 function pickerService($filter, pickerDropboxService, pickerGoogledriveService){
     this.version = '0.1';
@@ -66,10 +68,3 @@ pickerService.prototype.get = function(){
  *
  */
 pickerModule.service('pickerService', pickerService);
-
-/**
- * @description hello
- *
- *
- */
-pickerService['$inject'] = ['$filter', 'pickerDropboxService', 'pickerGoogledriveService'];

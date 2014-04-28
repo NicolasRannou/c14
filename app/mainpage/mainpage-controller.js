@@ -3,6 +3,8 @@
 /**
  * @constructor
  * @description hello
+ * @param {angular.$scope} $scope
+ * @ngInject
  */
 function MainpageCtrl($scope) {
     // general info for the main page
@@ -11,11 +13,6 @@ function MainpageCtrl($scope) {
                             'AngularJS',
                             'Karma'];
 }
-
-/**
- * @description hello
- */
-MainpageCtrl['$inject'] = ['$scope'];
 
 /**
  * @description hello

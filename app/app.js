@@ -2,8 +2,9 @@
 
 /**
  * @description App configuration
- *
- *
+ * @param {!angular.$routeProvider} $routeProvider
+ * @constructor
+ * @ngInject
  */
 function Config ($routeProvider) {
     $routeProvider
@@ -19,13 +20,6 @@ function Config ($routeProvider) {
             redirectTo: '/'
         });
 }
-
-/**
- * @description Inject route provider in module configuration
- *
- *
- */
-Config['$inject'] = ['$routeProvider'];
 
 /**
  * @description Module declaration
