@@ -10,8 +10,8 @@ function pickerDirective(pickerService){
         'link': function(scope, element, attrs){
                 scope['showPickers'] = pickerService.showPickers;
                 scope['pickers'] = pickerService.pickers;
-                scope['pickFrom'] = function(location){pickerService.pickFrom(location);};
-                scope['print'] = function(){pickerService.test();};
+                // scope['pickFrom'] = function(location){pickerService.pickFrom(location);};
+                // scope['print'] = function(){pickerService.test();};
             },
 
         'templateUrl': 'components/picker/picker.html'

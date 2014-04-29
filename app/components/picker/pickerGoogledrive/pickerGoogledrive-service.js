@@ -5,7 +5,7 @@
  */
 function pickerGoogledriveService(){
     pickerBaseService.call(this);
-    this.name = 'googledrive';
+    this.name = 'pickerGoogledrive';
     this.type = 'click';
     this.style = 'btn-warning';
     this.label = 'Googledrive';
@@ -30,7 +30,7 @@ function pickerGoogledriveService(){
 }
 
 /**
- * @description hello
+ * Inheritance pattern.
  */
 pickerGoogledriveService.prototype = Object.create(pickerBaseService.prototype);
 
@@ -103,7 +103,6 @@ pickerGoogledriveService.prototype.pickerCallback = function(){
 
 
 /**
- * @description hello
+ * Provide the pickerGoogledrive service to the pickerGoogledrive module.
  */
-     // Service injection
 pickerGoogledriveModule.service('pickerGoogledriveService', pickerGoogledriveService);

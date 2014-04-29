@@ -31,7 +31,7 @@
     "gapi":false,
     "google":false,
     "pickerGoogledriveModule":true,
-    "pickerUrlModule":true,
+    "pickerLocalModule":true,
     "indexerModule":true,
     "describe":false,
     "beforeEach":false,

@@ -6,7 +6,7 @@
 function pickerDropboxService(){
 
     pickerBaseService.call(this);
-    this.name = 'dropbox';
+    this.name = 'pickerDropbox';
     this.type = 'click';
     this.label = 'Dropbox';
 
@@ -44,18 +44,18 @@ function pickerDropboxService(){
 }
 
 /**
- * @description hello
+ * Inheritance pattern.
  */
 pickerDropboxService.prototype = Object.create(pickerBaseService.prototype);
 
 /**
- * @description hello
+ * Start Dropbox picking.
  */
 pickerDropboxService.prototype.pick = function(){
     Dropbox.choose(this.options);
 };
 
 /**
- * @description hello
+ * Provide the pickerDropboxService to the pickerDropbox module.
  */
 pickerDropboxModule.service('pickerDropboxService', pickerDropboxService);

@@ -4,16 +4,16 @@
  * @param {!angular.$filter} $filter
  * @param {pickerDropboxService} pickerDropboxService
  * @param {pickerGoogledriveService} pickerGoogledriveService
+ * @param {pickerLocalService} pickerLocalService
  * @ngInject
  */
-function pickerService($filter, pickerDropboxService, pickerGoogledriveService){
+function pickerService($filter, pickerDropboxService, pickerGoogledriveService, pickerLocalService){
     this.version = '0.1';
     this.showPickers = {status:false};
     this.filter = $filter;
 
     // picked elements
-    this.pickList = [{'heelo':'you'},
-                     {'heelo':'toto'}];
+    this.pickList = [];
 
     // list pickers
     this.pickers = [pickerDropboxService, pickerGoogledriveService];
@@ -23,7 +23,8 @@ function pickerService($filter, pickerDropboxService, pickerGoogledriveService){
 }
 
 /**
- * @description hello
+ * Initialize the pickers.
+ * Some pickers ('start' pickers), such as the URL picker need to be started at load time.
  */
 pickerService.prototype.init = function(){
       // run 'start' pickers, such as the url
@@ -35,9 +36,8 @@ pickerService.prototype.init = function(){
 };
 
 /**
+ * Start the provided picker.
  * @param {pickerBaseService} pickerObject
- *
- *
  */
 pickerService.prototype.pickFrom = function(pickerObject){
     pickerObject.pick();
@@ -63,8 +63,6 @@ pickerService.prototype.get = function(){
 };
 
 /**
- * @description hello
- *
- *
+ * Provide the picker service to the picker module.
  */
 pickerModule.service('pickerService', pickerService);

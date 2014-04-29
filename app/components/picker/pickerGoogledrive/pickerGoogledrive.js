@@ -1,6 +1,8 @@
 'use strict';
+
 /**
- * @description hello
+ * Declare the pickerGoogledrive module.
+ * The pickerGoogledrive module allows us to pick files from our Googledrive repository. 
  */
 
 /* jshint -W098 */

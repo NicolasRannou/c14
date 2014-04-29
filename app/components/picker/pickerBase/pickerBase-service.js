@@ -15,13 +15,13 @@ function pickerBaseService(){
 }
 
 /**
- * @description hello
+ * Start the picker module. To be overloaded.
  */
 pickerBaseService.prototype.pick = function(){
     window.console.log('Aloha Picker Base, please implement me!');
 };
 
 /**
- * @description hello
+ * Provide the pickerBase service to the pickerBase module.
  */
 pickerBaseModule.service('pickerBaseService', pickerBaseService);

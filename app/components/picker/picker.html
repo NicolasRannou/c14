@@ -10,7 +10,8 @@
         ng-click="pickFrom(picker.name)">{{picker.name}}</button> -->
 
         <span ng-repeat="picker in pickers | filter:{type:'click'}">
-        	<button type="button" class="btn {{picker.style}}"  ng-click="pickFrom(picker)">{{picker.label}}</button>
+          <span picker.name></span>
+<!--         	<button type="button" class="btn {{picker.style}}"  ng-click="pickFrom(picker)">{{picker.label}}</button> -->
         </span>
 <!-- 
     	<button type="button" class="btn btn-primary"  ng-click="pickFrom('local')">Local</button>

@@ -7,12 +7,9 @@
  */
 function ViewerCtrl($scope, pickerService){
     $scope.version = '0.3';
-    // $scope.pickY = {dfg:'fdo'};
-    //    window.console.log($scope.pickY);
-    // $scope.pickY = patientService.patientList;
-    $scope.pickY2 = pickerService.pickList;
-    window.console.log($scope.pickY2);
 
+    // attach our pickers to the current scope.
+    $scope.pickY2 = pickerService.pickList;
 
     // looking at the reference
     // we might want to look at a value ratther than obj
