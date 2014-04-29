@@ -74,10 +74,7 @@ pickerGoogledriveService.prototype.onPickerApiLoad = function(){
  *
  */
 pickerGoogledriveService.prototype.pick = function(){
-    window.console.log('Aloha Googledrive');
-    window.console.log('Let\'s pick!');
 
-    window.console.log(this);
     this.gPicker['setVisible'](true);
 
 };
@@ -93,7 +90,6 @@ pickerGoogledriveService.prototype.picker = function(){
             .setDeveloperKey(this.options.developerKey)
             .setCallback(this.pickerCallback)
             .build();
-        window.console.log(this.gPicker);
         this.gPicker['setVisible'](false);
     }
 };

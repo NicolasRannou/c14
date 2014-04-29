@@ -2,6 +2,7 @@
 /**
  * @constructor
  * @param {pickerService} pickerService
+ * @ngInject
  */
 function pickerDirective(pickerService){
     return {
@@ -12,16 +13,10 @@ function pickerDirective(pickerService){
                 scope['pickFrom'] = function(location){pickerService.pickFrom(location);};
                 scope['print'] = function(){pickerService.test();};
             },
+
         'templateUrl': 'components/picker/picker.html'
     };
 }
-
-/**
- * @description hello
- *
- *
- */
-pickerDirective['$inject'] = ['pickerService'];
 
 /**
  * @description hello
