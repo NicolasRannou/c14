@@ -6,8 +6,8 @@
 function pickerDropboxService(){
 
     pickerBaseService.call(this);
-    this.name = 'pickerDropbox';
-    this.type = 'click';
+    this.name = 'Dropbox';
+    this.type = 'button';
     this.label = 'Dropbox';
 
     // test

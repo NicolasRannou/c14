@@ -22,6 +22,20 @@ pickerBaseService.prototype.pick = function(){
 };
 
 /**
+ * Test the picker module. To be overloaded.
+ */
+pickerBaseService.prototype.test = function(){
+    window.console.log('Aloha Picker Base, please implement me! -test');
+};
+
+/**
+ * Update the status callbacks
+ */
+pickerBaseService.prototype.status = function(){
+    window.console.log('I\'m the status');
+};
+
+/**
  * Provide the pickerBase service to the pickerBase module.
  */
 pickerBaseModule.service('pickerBaseService', pickerBaseService);

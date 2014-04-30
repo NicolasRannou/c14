@@ -13,10 +13,13 @@ function pickerService($filter, pickerDropboxService, pickerGoogledriveService, 
     this.filter = $filter;
 
     // picked elements
-    this.pickList = [];
+    // do something for the status
+    this.pickList = [{'file':'imthefilename', 'status':'100', 'size':'20kB'},
+                     {'file':'imthefilename2', 'status':'100', 'size':'20kB'},
+                     {'file':'imthefilename3', 'status':'100', 'size':'20kB'}];
 
     // list pickers
-    this.pickers = [pickerDropboxService, pickerGoogledriveService];
+    this.pickers = [pickerDropboxService, pickerGoogledriveService, pickerLocalService];
 
     // check on url only at load time
     this.init();
@@ -31,10 +34,15 @@ pickerService.prototype.init = function(){
     var pickerObject = this.filter('filter')(this.pickers, {type:'start'});
     pickerObject.forEach(this.pickFrom);
 
-      // start 'bg' pickers, such as the draganddrop
-      // NO! drag and drop will be a viewer feature
+    // attach a progress method, a add method, a finised, etc.?
+    var self = this;
+    pickerDropboxService.prototype.test = function(){self.test();};
+    pickerGoogledriveService.prototype.test = function(){self.test();};
+    pickerLocalService.prototype.test = function(){self.test();};
 };
 
+// MIGH NOT BE USEFUL
+// contradiction (opposite) with pickFrom
 /**
  * Start the provided picker.
  * @param {pickerBaseService} pickerObject
@@ -49,6 +57,7 @@ pickerService.prototype.pickFrom = function(pickerObject){
  *
  */
 pickerService.prototype.test = function(){
+    window.console.log(this);
     this.pickList.push({'yayay':'yayaya'});
     window.console.log(this.pickList);
 };

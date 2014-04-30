@@ -5,8 +5,8 @@
  */
 function pickerGoogledriveService(){
     pickerBaseService.call(this);
-    this.name = 'pickerGoogledrive';
-    this.type = 'click';
+    this.name = 'Googledrive';
+    this.type = 'button';
     this.style = 'btn-warning';
     this.label = 'Googledrive';
 
@@ -38,7 +38,6 @@ pickerGoogledriveService.prototype = Object.create(pickerBaseService.prototype);
  * @description hello
  */
 pickerGoogledriveService.prototype.onAuthApiLoad = function() {
-    window.console.log(this);
     var self = this;
     gapi.auth.authorize({
         'client_id': self.options.clientId,
@@ -64,7 +63,6 @@ pickerGoogledriveService.prototype.handleAuthResult = function(authResult){
  * @description hello
  */
 pickerGoogledriveService.prototype.onPickerApiLoad = function(){
-    window.console.log(this);
     this.options.pickerApiLoaded = true;
     this.picker();
 };

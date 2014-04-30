@@ -8,11 +8,11 @@ function pickerGoogledriveDirective(pickerGoogledriveService){
     return {
         'scope':{},
         'link': function(scope, element, attrs){
-                // scope['showPickers'] = pickerService.showPickers;
-                // scope['pickers'] = pickerService.pickers;
-                // scope['pickFrom'] = function(location){pickerService.pickFrom(location);};
-                // scope['print'] = function(){pickerService.test();};
-            },
+            scope['label'] = pickerGoogledriveService.label;
+            scope['style'] = pickerGoogledriveService.style;
+            scope['object'] = pickerGoogledriveService;
+            scope['pickFrom'] = scope['$parent']['pickFrom'];
+        },
         'templateUrl': 'components/picker/pickerGoogledrive/pickerGoogledrive.html'
     };
 }

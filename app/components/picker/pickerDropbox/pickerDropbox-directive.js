@@ -8,11 +8,11 @@ function pickerDropboxDirective(pickerDropboxService){
     return {
         'scope':{},
         'link': function(scope, element, attrs){
-                // scope['showPickers'] = pickerService.showPickers;
-                // scope['pickers'] = pickerService.pickers;
-                // scope['pickFrom'] = function(location){pickerService.pickFrom(location);};
-                // scope['print'] = function(){pickerService.test();};
-            },
+            scope['label'] = pickerDropboxService.label;
+            scope['style'] = pickerDropboxService.style;
+            scope['object'] = pickerDropboxService;
+            scope['pickFrom'] = scope['$parent']['pickFrom'];
+        },
         'templateUrl': 'components/picker/pickerDropbox/pickerDropbox.html'
     };
 }
