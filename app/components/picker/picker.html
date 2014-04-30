@@ -10,7 +10,8 @@
         ng-click="pickFrom(picker.name)">{{picker.name}}</button> -->
 
         <span ng-repeat="picker in pickers | filter:{type:'click'}">
-          <span picker.name></span>
+<!--             {{picker.name}} -->
+<!--             <span {{picker.name}}></span> -->
 <!--         	<button type="button" class="btn {{picker.style}}"  ng-click="pickFrom(picker)">{{picker.label}}</button> -->
         </span>
 <!-- 
@@ -18,11 +19,13 @@
   		<button type="button" class="btn btn-success" ng-click="pickFrom('chris')">ChRIS</button>
   		<button type="button" class="btn btn-info" ng-click="pickFrom('dropbox')">DropBox</button>
   		<button type="button" class="btn btn-warning" ng-click="pickFrom('googledrive')">GoogleDrive</button> -->
-  		<button type="button" class="btn btn-danger" ng-click="showPickers.status = false" >I'm all set</button>
+  		  <button type="button" class="btn btn-danger" ng-click="showPickers.status = false" >I'm all set</button>
     </span>
+
     <span ng-switch-default>
-		<button type="button" class="btn btn-primary" ng-click="showPickers.status = true" >Pick something</button>
+		    <button type="button" class="btn btn-primary" ng-click="showPickers.status = true" >Pick something</button>
     </span>
+
 </span>
 
 <h3>Dev tools</h3>
