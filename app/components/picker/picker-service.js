@@ -34,11 +34,12 @@ pickerService.prototype.init = function(){
     var pickerObject = this.filter('filter')(this.pickers, {type:'start'});
     pickerObject.forEach(this.pickFrom);
 
-    // attach a progress method, a add method, a finised, etc.?
     var self = this;
-    pickerDropboxService.prototype.addToPickList = function(file){return self.addToPickList(file);};
-    pickerGoogledriveService.prototype.addToPickList = function(file){return self.addToPickList(file);};
-    pickerLocalService.prototype.addToPickList = function(file){return self.addToPickList(file);};
+    for (var i=0,  tot=this.pickers.length; i < tot; i++) {
+        if(this.pickers[i].type === 'button'){
+            this.pickers[i].addToPickList = function(file){return self.addToPickList(file);};
+        }
+    }
 };
 
 // MIGHT NOT BE USEFUL
