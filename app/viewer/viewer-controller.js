@@ -9,13 +9,16 @@ function ViewerCtrl($scope, pickerService){
     $scope.version = '0.3';
 
     // attach our pickers to the current scope.
-    $scope.pickY2 = pickerService.pickList;
+    $scope.pickY2 = pickerService.getPickList();
 
-    // looking at the reference
+    //looking at the reference
     // we might want to look at a value ratther than obj
-    // $scope.$watchCollection('pickY2', function() {
-    //   indexerService.index($scope['pickY2']);
-    // });
+// $scope.$watchCollection(
+//         function(){ return pickerService.getPickList(); },
+
+//         function(newVal) {
+//           $scope.pickY2 = newVal;
+//         });
 }
 
 /**

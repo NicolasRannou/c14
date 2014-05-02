@@ -18,13 +18,13 @@ function pickerBaseService(){
  * Start the picker module. To be overloaded.
  */
 pickerBaseService.prototype.pick = function(){
-    window.console.log('Aloha Picker Base, please implement me!');
+    window.console.log('Aloha Picker Base, please implement me! -pick');
 };
 
 /**
  * Test the picker module. To be overloaded.
  */
-pickerBaseService.prototype.test = function(){
+pickerBaseService.prototype.addToPickList = function(file){
     window.console.log('Aloha Picker Base, please implement me! -test');
 };
 

@@ -11,13 +11,23 @@ function pickerDropboxService(){
     this.label = 'Dropbox';
 
     // test
-    this.formats = ['.dcm'];
+    this.formats = ['*'];
+    var self = this;
 
     this.options = {
 
         // Required. Called when a user selects an item in the Chooser.
         'success': function(files) {
-            window.alert('Here\'s the file link: ' + files[0].link);
+            window.console.log(files[0]);
+
+            for (var i=0,  tot=files.length; i < tot; i++) {
+                var file = {'name':files[i].name,
+                            'size':files[i].bytes,
+                            'link':files[i].link,
+                            'file':''};
+                self.addToPickList(file);
+            }
+
         },
 
         // Optional. Called when the user closes the dialog without selecting a file

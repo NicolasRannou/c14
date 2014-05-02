@@ -31,31 +31,41 @@ pickerLocalService.prototype.pick = function(){
  * @description hello
  */
 pickerLocalService.prototype.handleFileSelect = function(evt) {
-	var self = this;
-	this.test();
 
-    var reader = new FileReader();
-    reader['onerror'] = function(evt) {
-        window.console.log('File read errorHandler');
-    };
-    reader['onprogress'] = function(evt) {
-        window.console.log('File read updateProgress');
-    };
-    reader['onabort'] = function(e) {
-        window.console.log('File read onabort');
-    };
-    reader['onloadstart'] = function(e) {
-        window.console.log('File read onloadstart');
-    };
+    for (var i=0,  tot=evt.target.files.length; i < tot; i++) {
+        var file = {'name':evt.target.files[i].name,
+                    'size':evt.target.files[i].size,
+                    'link':'',
+                    'file':evt.target.files[i]};
+        this.addToPickList(file);
+    }
 
-    reader['onload'] = function(e) {
-        window.console.log('File read onload');
-        window.console.log(self);
-    };
+ //    window.console.log(evt.target.files[0]);
+	// //this.test();
+ //    window.console.log(evt);
 
-    // only read the first file for now
-    // Read in the image file as a binary string.
-    reader.readAsBinaryString(evt.target.files[0]);
+    // var reader = new FileReader();
+    // reader['onerror'] = function(evt) {
+    //     window.console.log('File read errorHandler');
+    // };
+    // reader['onprogress'] = function(evt) {
+    //     window.console.log('File read updateProgress');
+    // };
+    // reader['onabort'] = function(e) {
+    //     window.console.log('File read onabort');
+    // };
+    // reader['onloadstart'] = function(e) {
+    //     window.console.log('File read onloadstart');
+    // };
+
+    // reader['onload'] = function(e) {
+    //     window.console.log('File read onload');
+    //     window.console.log(self);
+    // };
+
+    // // only read the first file for now
+    // // Read in the image file as a binary string.
+    // reader.readAsBinaryString(evt.target.files[0]);
 };
 
 /**

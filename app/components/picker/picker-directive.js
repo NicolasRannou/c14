@@ -11,10 +11,7 @@ function pickerDirective($compile, pickerService){
     var pickerDirectiveDefinitionObject = {
         'scope':{},
         'templateUrl': 'components/picker/picker.html',
-        'link': function (scope, iElement, iAttrs, controller) {
-            // attach pickFrom to the scope so child scopes can call it
-            scope['pickFrom'] = function(pickerObject){pickerService.pickFrom(pickerObject);};
-            scope['pickList'] = pickerService.pickList;
+        'compile': function(element, attributes) {
 
             var pickerButtons = document.querySelector('#pickerButtons');
             var span = document.createElement('span');
@@ -22,12 +19,18 @@ function pickerDirective($compile, pickerService){
 
             for (var i=0,  tot=pickerService.pickers.length; i < tot; i++) {
                 if(pickerService.pickers[i].type === 'button'){
-                    span.innerHTML += '<span><span picker-' + pickerService.pickers[i].name + '></span></span>';
+                    span.innerHTML += '<span><span picker-' + pickerService.pickers[i].name + ' the-Parent-Prop=pickList></span></span>';
                 }
             }
 
             pickerButtons.appendChild(span);
-            $compile(pickerButtons)(scope);
+
+            var linkFunction = function($scope, element, attributes) {
+                $scope['pickFrom'] = function(pickerObject){pickerService.pickFrom(pickerObject);};
+                $scope['pickList'] = pickerService.getPickList();
+            };
+
+            return linkFunction;
         }
     };
 

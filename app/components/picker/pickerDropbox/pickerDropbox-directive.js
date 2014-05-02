@@ -11,7 +11,8 @@ function pickerDropboxDirective(pickerDropboxService){
             scope['label'] = pickerDropboxService.label;
             scope['style'] = pickerDropboxService.style;
             scope['object'] = pickerDropboxService;
-            scope['pickFrom'] = scope['$parent']['pickFrom'];
+            // not to loose its scope!
+            scope['pick'] = function(){pickerDropboxService.pick();};
         },
         'templateUrl': 'components/picker/pickerDropbox/pickerDropbox.html'
     };

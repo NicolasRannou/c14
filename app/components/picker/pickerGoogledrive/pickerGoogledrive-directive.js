@@ -12,6 +12,8 @@ function pickerGoogledriveDirective(pickerGoogledriveService){
             scope['style'] = pickerGoogledriveService.style;
             scope['object'] = pickerGoogledriveService;
             scope['pickFrom'] = scope['$parent']['pickFrom'];
+            scope['go'] = pickerGoogledriveService.go;
+            //scope['test'] = function(){window.console.log(scope);scope['$parent']['test']();};
         },
         'templateUrl': 'components/picker/pickerGoogledrive/pickerGoogledrive.html'
     };

@@ -99,6 +99,9 @@ pickerGoogledriveService.prototype.pickerCallback = function(){
     window.console.log('YAYA');
 };
 
+pickerGoogledriveService.prototype.go = function(){
+    // this.test();
+};
 
 /**
  * Provide the pickerGoogledrive service to the pickerGoogledrive module.

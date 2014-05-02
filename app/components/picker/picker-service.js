@@ -1,22 +1,22 @@
 'use strict';
 /**
  * @constructor
+ * @param {!angular.$rootScope} $rootScope
  * @param {!angular.$filter} $filter
  * @param {pickerDropboxService} pickerDropboxService
  * @param {pickerGoogledriveService} pickerGoogledriveService
  * @param {pickerLocalService} pickerLocalService
  * @ngInject
  */
-function pickerService($filter, pickerDropboxService, pickerGoogledriveService, pickerLocalService){
+function pickerService($rootScope, $filter, pickerDropboxService, pickerGoogledriveService, pickerLocalService){
     this.version = '0.1';
     this.showPickers = {status:false};
     this.filter = $filter;
+    this.rootScope = $rootScope;
 
     // picked elements
     // do something for the status
-    this.pickList = [{'file':'imthefilename', 'status':'100', 'size':'20kB'},
-                     {'file':'imthefilename2', 'status':'100', 'size':'20kB'},
-                     {'file':'imthefilename3', 'status':'100', 'size':'20kB'}];
+    this.pickList = [];
 
     // list pickers
     this.pickers = [pickerDropboxService, pickerGoogledriveService, pickerLocalService];
@@ -36,12 +36,12 @@ pickerService.prototype.init = function(){
 
     // attach a progress method, a add method, a finised, etc.?
     var self = this;
-    pickerDropboxService.prototype.test = function(){self.test();};
-    pickerGoogledriveService.prototype.test = function(){self.test();};
-    pickerLocalService.prototype.test = function(){self.test();};
+    pickerDropboxService.prototype.addToPickList = function(file){return self.addToPickList(file);};
+    pickerGoogledriveService.prototype.addToPickList = function(file){return self.addToPickList(file);};
+    pickerLocalService.prototype.addToPickList = function(file){return self.addToPickList(file);};
 };
 
-// MIGH NOT BE USEFUL
+// MIGHT NOT BE USEFUL
 // contradiction (opposite) with pickFrom
 /**
  * Start the provided picker.
@@ -56,10 +56,13 @@ pickerService.prototype.pickFrom = function(pickerObject){
  *
  *
  */
-pickerService.prototype.test = function(){
-    window.console.log(this);
-    this.pickList.push({'yayay':'yayaya'});
-    window.console.log(this.pickList);
+pickerService.prototype.addToPickList = function(file){
+    this.pickList.push(file);
+    this.rootScope.$digest();
+};
+
+pickerService.prototype.getPickList = function(){
+    return this.pickList;
 };
 
 /**

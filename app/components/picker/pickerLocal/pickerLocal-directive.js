@@ -12,12 +12,15 @@ function pickerLocalDirective(pickerLocalService){
             scope['label'] = pickerLocalService.label;
             scope['style'] = pickerLocalService.style;
             scope['object'] = pickerLocalService;
-            // pick method
             scope['pickFrom2'] = function(){
                 document.getElementById('files').click();
             };
 
-            document.getElementById('files').addEventListener('change', function(event){pickerLocalService.handleFileSelect(event);}, false);
+            // use apply because of event binding (asynchronous!)
+            document.getElementById('files').addEventListener('change',
+                                                              function(event){ pickerLocalService.handleFileSelect(event); },
+                                                              false);
+
         },
         'templateUrl': 'components/picker/pickerLocal/pickerLocal.html'
     };
